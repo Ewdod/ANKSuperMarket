@@ -1,8 +1,38 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Urun Listesi";
 }
+@model List<ANKSuperMarket.Models.Urun>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+
+
+
+<title>Ürün Listesi</title>
+
+
+<h2>Ürün Listesi</h2>
+<table>
+    <thead>
+        <tr>
+            <th>ID          </th>
+            <th>Ürün Adı    </th>
+            <th>Fiyat       </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var urun in Model)
+        {
+            <tr>
+                <td>@urun.Id</td>
+                <td>@urun.Name</td>
+                <td>@urun.Fiyat</td>
+
+                <td>
+                    <a asp-action="Sil" asp-route-id="@urun.Id" class="btn btn-danger">Sil</a>
+                    <a asp-action="Duzenle" asp-route-id="@urun.Id" class="btn btn-warning">Duzenle</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
